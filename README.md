@@ -1,9 +1,5 @@
 # Landing Page Project
 
-## Instructions
+This project is a combination of HTML, CSS, and JavaScript for the purpose of demonstrating an understanding of manipulation of the DOM in various ways.
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+Interactive functionality is on display as elements are created to interact with event listeners, appended, styled, and reclassed for the purposes of dynamic navigation.
