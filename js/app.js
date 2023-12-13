@@ -34,12 +34,11 @@ function buildNavBar() {
         // create anchor element for each li element
         const anchorElement = document.createElement('a');
         
-        //create variable for section id
+        // create variable for section id
         const sectionId = section.getAttribute('id');
         
-        
         // set 'href to the section Id
-        anchorElement.setAttribute('href', `#${sectionId}`)
+        anchorElement.setAttribute('href', `#${sectionId}`);
         
         // set class name for anchor
         anchorElement.className = 'menu__link';
@@ -52,18 +51,15 @@ function buildNavBar() {
         
         // add li elements to ul navbar
         navBar.append(listElements);
-        
-    })
+    });
 }
-
-buildNavBar()
+buildNavBar();
 
 // Scroll into viewport of section on click
 function smootheScroll() {
     // create click event
     navBar.addEventListener('click', function(event) {
-        
-        // remove defaut click animation
+        // remove default click animation
         event.preventDefault();
         
         // reference target to specific link
@@ -73,30 +69,43 @@ function smootheScroll() {
         const section = document.querySelector(hrefId);
         
         // change scroll behavior
-        section.scrollIntoView({ behavior: "smooth", inline: "nearest" });
+        section.scrollIntoView({ behavior: 'smooth', inline: 'nearest' });
         
+        // Add and remove 'active' class for the clicked link
         const activeLink = document.querySelector('.active');
         if (activeLink) {
             activeLink.classList.remove('active');
         }
         event.target.classList.add('active');
-    })
+    });
 }
+smootheScroll();
 
-smootheScroll()
-
-// Set sections as active
-window.onscroll = () => {
+// Set sections and anchor links as active on scroll
+window.addEventListener('scroll', function() {
     sections.forEach((section) => {
-        // get postition of sections
-        if (section.getBoundingClientRect().top >= -400 && section.getBoundingClientRect().top <= 150) {
-            
+        // get position of sections
+        const sectionBounds = section.getBoundingClientRect();
+        if (sectionBounds.top >= -400 && sectionBounds.top <= 150) {
             // update class to section in viewport
-            section.classList.add("your-active-class");
+            section.classList.add('your-active-class');
+
+            // Update the active link in the navigation bar
+            const sectionId = section.id;
+            const correspondingLink = document.querySelector(`a[href="#${sectionId}"]`);
+
+            if (correspondingLink) {
+                // Remove 'active' class from all links
+                document.querySelectorAll('.menu__link').forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                // Add active class to the corresponding link
+                correspondingLink.classList.add('active');
+            }
         } else {
             // update class to sections not in viewport
-            section.classList.remove("your-active-class");
+            section.classList.remove('your-active-class');
         }
     });
-};
-
+});

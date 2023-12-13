@@ -204,6 +204,20 @@ li .active {
     transition: ease 0.3s all;
 }
 
+#navbar__list {
+    display: flex
+}
+
+@media (max-width: 768px) {
+    #navbar__list {
+        display: flex;
+        flex-direction: row;
+        flex-shrink: unset;
+    }
+
+    /* Add styles for the hamburger menu icon or any other mobile-friendly navigation pattern */
+}
+
 section.your-active-class .landing__container::before {
     opacity: 1;
     animation: rotate 4s linear 0s infinite forwards;
